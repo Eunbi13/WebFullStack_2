@@ -1,6 +1,5 @@
 package com.iu.s1.member;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
 import com.iu.s1.util.ActionForward;
