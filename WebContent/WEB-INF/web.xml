@@ -15,6 +15,6 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>Member</servlet-name>
-  	<url-pattern>/member/memberLogin.do</url-pattern>
+  	<url-pattern>/member/*</url-pattern><!-- 멤버로 시작하는 모든 애들,, 계속 새로 만들 순 없으니까 ㅇㅇ -->
   </servlet-mapping>
 </web-app>

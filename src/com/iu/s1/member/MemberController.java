@@ -1,6 +1,8 @@
 package com.iu.s1.member;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/MemberController")
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	//private static final RequestDispatcher  = null;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -26,8 +29,6 @@ public class MemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
@@ -38,17 +39,30 @@ public class MemberController extends HttpServlet {
 		MemberDTO dto = new MemberDTO();
 		dto.setId(id);
 		dto.setPw(pw);
+		
+		String result="";
 		try {
 			dto= dao.login(dto);
 			if(dto !=null) {
-				System.out.println("success");
+				result="success";
 			}else {
-				System.out.println("fale");
+				result="fale";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//attribute(속성)
+		request.setAttribute("r", result);
+		
+		if(dto !=null) {
+		request.setAttribute("dto", dto);
+		}
+		
+		//foward
+		RequestDispatcher view = request.getRequestDispatcher("./memberResult.jsp");
+		view.forward(request, response);
 	}
 
 	/**
