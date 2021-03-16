@@ -26,7 +26,7 @@ public class MemberService {
 			dto.setName(request.getParameter("name"));
 			dto.setEmail(request.getParameter("email"));
 			dto.setphone(request.getParameter("phone"));
-			int result = memberDAO.join(dto);
+		//	int result = memberDAO.join(dto);
 			actionForward.setPath("../index.do");
 			actionForward.setCheck(false);
 		}//post면 주소를 담음
