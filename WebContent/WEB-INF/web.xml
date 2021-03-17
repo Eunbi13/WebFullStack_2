@@ -29,10 +29,16 @@
 	<servlet-mapping>
 		<servlet-name>BankBook</servlet-name>
 		<url-pattern>/bankbook/*</url-pattern>
-
 	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>Trade</servlet-name>
+		<servlet-class>com.iu.s1.trade.TradeController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Trade</servlet-name>
+		<url-pattern>/trade/*</url-pattern>
+	</servlet-mapping>
 	
 	
 

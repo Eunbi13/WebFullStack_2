@@ -1,5 +1,10 @@
+<%@page import="com.iu.s1.trade.TradeDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+List<TradeDTO> ar = (List<TradeDTO>) request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +23,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -38,13 +40,50 @@
 				<li><a href="./bankbook/bankbookList.do">BankBook</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="./member/memberJoin.do"><span class="glyphicon glyphicon-user"></span>
-						Sign Up</a></li>
-				<li><a href="./member/memberLogin.do"><span class="glyphicon glyphicon-log-in"></span>
-						Login</a></li>
+				<li><a href="./member/memberJoin.do"><span
+						class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="./member/memberLogin.do"><span
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
 		</div>
 	</nav>
+
+	<div class="container">
+		<div class="row">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>TradeNum</th>
+						<th>AccountNum</th>
+						<th>TDate</th>
+						<th>TradeAmount</th>
+						<th>TradeBalance</th>
+						<th>TradeIO</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<%
+					for (int i = 0; i < ar.size(); i++) {
+					%>
+					<tr>
+						<td><%=ar.get(i).getTradeNum()%></td>
+						<td><%=ar.get(i).getAccountNum()%></td>
+						<td><%=ar.get(i).gettDate()%></td>
+						<td><%=ar.get(i).getTradeAmount()%></td>
+						<td><%=ar.get(i).getTradeBalance()%></td>
+						<td><%=ar.get(i).getTradeIO()%></td>
+					</tr>
+					<%
+					}
+					%>
+				</tbody>
+
+			</table>
+
+
+		</div>
+	</div>
 
 
 </body>
