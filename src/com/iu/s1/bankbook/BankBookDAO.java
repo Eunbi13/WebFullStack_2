@@ -91,7 +91,7 @@ public class BankBookDAO {
 		
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url, user, password);
-		String sql = "insert into bankbook (bookname, booknum, rate, sal) values(?, bank_seq.nextval, ?, ?)";
+		String sql = "insert into bankbook (bookname, booknum, rate, sal) values(?, BANK_SEQ.nextval, ?, ?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, bankBookDTO.getBookName());
 		st.setDouble(2, bankBookDTO.getRate());
