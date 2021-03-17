@@ -72,7 +72,7 @@
 					<% for(int i =0; i<ar.size(); i++){ %>
 					<tr>
 						<!-- 리스트에 있는 만큼 돌려야 하니까 반복문 필요 -->
-						<td><%= ar.get(i).getBookName() %></td>
+						<td><a href="./bankbookSelect.do?bookNum=<%= ar.get(i).getBookNum() %>" ><%= ar.get(i).getBookName() %></a></td>
 						<td><%= ar.get(i).getRate() %></td>
 						<td><%= ar.get(i).getSal() %></td>
 					</tr>

@@ -38,9 +38,11 @@ public class BankBookService {
 		ActionForward actionForward = new ActionForward();
 		BankBookDTO bankBookDTO = new BankBookDTO(); 
 		
-		bankBookDTO.setBookNum(1L);
+		bankBookDTO.setBookNum(Long.parseLong(request.getParameter("bookNum")));
 		
 		bankBookDTO = bankBookDAO.getSelect(bankBookDTO);
+		
+		
 		request.setAttribute("select", bankBookDTO);
 		
 		
