@@ -83,6 +83,31 @@ public class BankBookDAO {
 		//여기까지 하고 테스트를 했어야했음 ㅠㅠ
 	}
 	
+	public int setWrite(BankBookDTO bankBookDTO) throws Exception {
+		String user = "user01";
+		String password = "user01";
+		String url="jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		
+		Class.forName(driver);
+		Connection con = DriverManager.getConnection(url, user, password);
+		String sql = "insert into bankbook (bookname, booknum, rate, sal) values(?, bank_seq.nextval, ?, ?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, bankBookDTO.getBookName());
+		st.setDouble(2, bankBookDTO.getRate());
+		st.setString(3, bankBookDTO.getSal());
+		
+		int result = st.executeUpdate();
+		//처리
+			bankBookDTO =null;
+		
+		//종료
 	
+		st.close();
+		con.close();
+		
+		return result;
+		
+	}
 	
 }

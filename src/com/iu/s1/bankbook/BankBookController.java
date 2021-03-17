@@ -42,6 +42,10 @@ public class BankBookController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//한글 인코딩 처리 모든 컨트롤러에 쓰기
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		//url 뒷 주소 가져오기 멤버컨트롤러 참조 ㅇㅇ
 
 		String uri = request.getRequestURI();// /WebFullStack_2/bankbook/bankbooList.do
@@ -62,6 +66,11 @@ public class BankBookController extends HttpServlet {
 				
 				System.out.println("bankbookSelect실행");
 				actionForward = bankBookService.getSelect(request);
+				
+			}else if (uri.equals("bankbookWrite.do")) {
+				
+				System.out.println("bankbookWrite 실행");
+				actionForward = bankBookService.setWrite(request);
 			}
 				
 			
@@ -85,7 +94,7 @@ public class BankBookController extends HttpServlet {
 		}
 
 	}
-
+//----------------------------------------------------------------------------------------------------------------
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -1,19 +1,14 @@
-<%@page import="com.iu.s1.bankbook.BankBookDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	//리스트를 꺼내야함 내장객체인 리퀘스트에 있음
-	List<BankBookDTO> ar = (List<BankBookDTO>)request.getAttribute("list");//이 이름,,,서비스에 적혀있음,,,
-	
-	%>
-
-
+<%
+request.getAttribute("write");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -27,7 +22,6 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -52,43 +46,48 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="container">
-		<div class="row">
-			<h1>BankBookList</h1>
-
-			<!-- 반복문테이블에 넣을거라고? -->
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<!-- 한개의 로우입니다. -->
-						<th>BookName</th>
-						<!-- 제목일땐 th쓰자 -->
-						<th>Rate</th>
-						<th>Sal</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<% for(int i =0; i<ar.size(); i++){ %>
-					<tr>
-						<!-- 리스트에 있는 만큼 돌려야 하니까 반복문 필요 -->
-						<td><a href="./bankbookSelect.do?bookNum=<%= ar.get(i).getBookNum() %>" ><%= ar.get(i).getBookName() %></a></td>
-						<td><%= ar.get(i).getRate() %></td>
-						<td><%= ar.get(i).getSal() %></td>
-					</tr>
-					<% } %>
-				</tbody>
-
-			</table>
-
-			
-			<a href="./bankbookWrite.do" class="btn btn-danger">Write</a>
 
 
 
+	<form class="form-horizontal" action="./bankbookWrite.do" method="post">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="bookName">BookNmae:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="bookName"
+					placeholder="Enter bookName" name="bookName">
+
+			</div>
 		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="rate">Rate:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="rate"
+					placeholder="Enter rate" name="rate">
+			</div>
+		</div>
+		<div>
+			<div class="form-group">
+				<label for="sel1">Select Sal:</label> <select class="form-control"
+					id="sal" name="sal">
+					<!-- 제일 중요한 게 name 잊지 말자 이거 없으면 파라미터로 정보가 안넘어간다! -->
+					<option>Y</option>
+					<option>N</option>
+				</select>
+			</div>
+		</div>
+		<!-- <div class="form-group"> 체크박스를 써서 하는거는 위에,,ㅎ
+			<label class="control-label col-sm-2" for="sal">Sal:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="sal"
+					placeholder="Enter sal" name="sal">
+			</div>
+		</div> -->
 
-	</div>
-
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+		</div>
+	</form>
 </body>
 </html>

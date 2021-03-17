@@ -53,6 +53,43 @@ public class BankBookService {
 		return actionForward;
 	}
 
+	
+	public ActionForward setWrite(HttpServletRequest request) throws Exception{
+		ActionForward actionForward = new ActionForward();
+		
+		String method = request.getMethod();
+		//GET
+		actionForward.setPath("../WEB-INF/bankbook/bankbookWrite.jsp");
+		actionForward.setCheck(true);
+		System.out.println("setWrite실행");
+		//forward가 실행된거임 왜냐, jsp를 보내고 true고 view(jsp)가 클라이언트에 떴기 때문이다!jsp는 데이터를 담고 있지,,
+		
+		
+		if(method.toLowerCase().equals("post")) {
+			System.out.println("method: "+method);
+			
+			BankBookDTO bankBookDTO = new BankBookDTO();
+			bankBookDTO.setBookName(request.getParameter("bookName"));
+			bankBookDTO.setRate(Double.parseDouble(request.getParameter("rate")));
+			bankBookDTO.setSal(request.getParameter("sal"));
+			//클릭하면 링크로 연결하는 거니까 여기에 이게 있으면 안됟ㄴ데,,
+			
+			int result = bankBookDAO.setWrite(bankBookDTO);
+			request.setAttribute("write", bankBookDTO);
+			System.out.println(result);
+			
+			
+			actionForward.setPath("./bankbookWrite.do");
+			actionForward.setCheck(false);
+			
+			if(bankBookDTO !=null) {
+				actionForward.setPath("./bankbookList.do");
+			}
+		} 
+		
+		
+		return actionForward;
+	}
 
 
 }

@@ -37,7 +37,11 @@ public void init() throws ServletException {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//한글 인코딩 작업
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
+		
 		String path = request.getServletPath();
 		System.out.println(path);
 		String uri = request.getRequestURI();
