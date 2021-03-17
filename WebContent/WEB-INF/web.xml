@@ -28,7 +28,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BankBook</servlet-name>
-		<url-pattern>/bankbook/bankbookList.do</url-pattern>
+		<url-pattern>/bankbook/*</url-pattern>
 
 	</servlet-mapping>
 

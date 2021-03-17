@@ -1,13 +1,11 @@
+
 <%@page import="com.iu.s1.bankbook.BankBookDTO"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	//리스트를 꺼내야함 내장객체인 리퀘스트에 있음
-	List<BankBookDTO> ar = (List<BankBookDTO>)request.getAttribute("list");//이 이름,,,서비스에 적혀있음,,,
-	
-	%>
 
+<%
+BankBookDTO bankBookDTO = (BankBookDTO) request.getAttribute("select");//집어넣는건 데이터고 그걸 돕는 메서드가 어트리뷰트
+%>
 
 <!DOCTYPE html>
 <html>
@@ -52,11 +50,9 @@
 			</ul>
 		</div>
 	</nav>
+
 	<div class="container">
 		<div class="row">
-			<h1>BankBookList</h1>
-
-			<!-- 반복문테이블에 넣을거라고? -->
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -68,26 +64,15 @@
 					</tr>
 				</thead>
 
-				<tbody>
-					<% for(int i =0; i<ar.size(); i++){ %>
-					<tr>
-						<!-- 리스트에 있는 만큼 돌려야 하니까 반복문 필요 -->
-						<td><%= ar.get(i).getBookName() %></td>
-						<td><%= ar.get(i).getRate() %></td>
-						<td><%= ar.get(i).getSal() %></td>
-					</tr>
-					<% } %>
-				</tbody>
-
-
-
-
-
+				<tr>
+					<td><%= bankBookDTO.getBookName() %></td>
+					<td><%= bankBookDTO.getRate() %></td>
+					<td><%= bankBookDTO.getSal() %></td>
+				</tr>
 			</table>
-
 		</div>
-
 	</div>
+
 
 </body>
 </html>

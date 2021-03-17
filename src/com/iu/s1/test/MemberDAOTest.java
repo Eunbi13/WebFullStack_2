@@ -7,32 +7,22 @@ import com.iu.s1.member.MemberDTO;
 
 public class MemberDAOTest {
 	public static void main(String[] args) {
-//		MemberDAO dao = new MemberDAO();
-//		MemberDTO dto = new MemberDTO();
-//		
-//		
-//		dto.setId("dd");
-//		dto.setPw("dd");
-//		dto.setName("dd");
-//		dto.setphone("dd");
-//		dto.setEmail("dd@dd");
-//		try {
-//			int num = dao.join(dto);
-//			System.out.println(num != 0);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		MemberDAO dao = new MemberDAO();
+		MemberDTO dto = new MemberDTO();
 		
-		BankBookDAO bankBookDAO = new BankBookDAO();
-		BankBookDTO bankBookDTO = new BankBookDTO();
+		
+		dto.setId("dd");
+		dto.setPw("dd");
+		dto.setName("dd");
+		dto.setphone("dd");
+		dto.setEmail("dd@dd");
 		try {
-			bankBookDTO=bankBookDAO.getList();
+			int num = dao.join(dto);
+			System.out.println(num != 0);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 	}
 

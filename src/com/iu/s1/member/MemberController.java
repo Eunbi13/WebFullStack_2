@@ -18,7 +18,7 @@ import com.iu.s1.util.ActionForward;
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//private static final RequestDispatcher  = null;
-	MemberService memberService;
+	private MemberService memberService;
 	
     /**
      * @see HttpServlet#HttpServlet()

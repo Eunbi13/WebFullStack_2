@@ -2,19 +2,21 @@ package com.iu.s1.bankbook;
 
 public class BankBookDTO {
 	private String bookName;
-	private int bookNum;
+	private long bookNum;
 	private double rate;
 	private String sal;
+	
+	
 	public String getBookName() {
 		return bookName;
 	}
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public int getBookNum() {
+	public long getBookNum() {
 		return bookNum;
 	}
-	public void setBookNum(int bookNum) {
+	public void setBookNum(long bookNum) {
 		this.bookNum = bookNum;
 	}
 	public double getRate() {

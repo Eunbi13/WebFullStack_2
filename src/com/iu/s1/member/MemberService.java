@@ -52,6 +52,7 @@ public class MemberService {
 			actionForward.setPath("./memberLogin.do");
 			
 			if(memberDTO != null) {
+				System.out.println("dd");
 			actionForward.setPath("../index.do");
 //			actionForward.setCheck(false);
 			}
