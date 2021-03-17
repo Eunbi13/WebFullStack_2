@@ -67,12 +67,14 @@ request.getAttribute("write");
 		</div>
 		<div>
 			<div class="form-group">
-				<label for="sel1">Select Sal:</label> <select class="form-control"
-					id="sal" name="sal">
+				<label class="control-label col-sm-2" for="sel1">Select Sal:</label> 
+				<div class="col-sm-10">
+					<select class="form-control " id="sal" name="sal">
 					<!-- 제일 중요한 게 name 잊지 말자 이거 없으면 파라미터로 정보가 안넘어간다! -->
 					<option>Y</option>
 					<option>N</option>
 				</select>
+				</div>
 			</div>
 		</div>
 		<!-- <div class="form-group"> 체크박스를 써서 하는거는 위에,,ㅎ
